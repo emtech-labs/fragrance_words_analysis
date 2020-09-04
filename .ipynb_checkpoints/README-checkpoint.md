@@ -38,18 +38,11 @@ docker-compose up -d
 ## ディレクトリ構造
 ```
 .  # メインの作業場所。dockerはここにマウントされている。
-add_meta.ipynb               # 作業ファイル。
 ├── data
-│   ├── fragrance_user_dic.csv  # ユーザー辞書の元データ。辞書の更新を行う際はこちらのデータを編集する。
-│   └── fragrance_user_dic.dic # ユーザー辞書として使えるように変換したデータ。
-│   └── perfume_sentence.csv # 香水の記事データ。特徴語はこちらの文章から抽出。
-├── material                 # タスクの概要などをまとめた資料。
-│   └── intern2020_kayo.pptx
+│   ├── generate_result.csv  # 結果格納用ファイル。初期は空
+│   └── wikipedia_triple.tsv # 学習用データ。大きいので開くときは注意
+├── model
+│   └── jawikiword_split_1   # Wikipediaの一部から獲得したデータで学習したモデル
 └── src                      # 生成スクリプトが入っている。必要に応じてファイルの追加・編集ご自由に
-    └── clustering.py
-    └── network_generater.py
-    └── sample_cluster.ipynb
-    └── sample_vectorize.ipynb
-    └── vectrizer.py
-
+    └── sentence_generator.py
 ```
