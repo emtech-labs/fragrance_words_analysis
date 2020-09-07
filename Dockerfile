@@ -10,7 +10,11 @@ RUN pip install -U pip && \
     pip install ipywidgets && \
     pip install pandas
 
-RUN pip install networkx && \
+RUN pip install networkx && \    
     pip install ginza
-
+    
 RUN jupyter nbextension enable --py widgetsnbextension
+
+RUN pip install mecab==0.995 && \
+    pip install numpy && \
+    pip install scikit-learn
