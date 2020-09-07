@@ -15,6 +15,9 @@ RUN pip install networkx && \
     
 RUN jupyter nbextension enable --py widgetsnbextension
 
-RUN pip install mecab==0.995 && \
+RUN pip install mecab-python3==0.996.5 && \
+    pip install unidic-lite && \
+    pip install fasttext && \
+    pip install gensim && \
     pip install numpy && \
     pip install scikit-learn
