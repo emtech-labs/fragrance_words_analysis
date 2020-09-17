@@ -25,11 +25,11 @@ class ClustarGenerator:
                                   max_iter=10)
         # クラスタリング実行
         kmeans_model.fit(vectors_list)
+        inertia = kmeans_model.inertia_
 
         # クラスタリングデータにラベル付け
         labels = kmeans_model.labels_
-
-        return labels
+        return labels, inertia
 
 
     def dimensionality_reduction(self, vec_list: list, vec_size):
@@ -57,8 +57,22 @@ class ClustarGenerator:
 
         if vector_list.shape[1] >= vector_size:
             vector_list = self.dimensionality_reduction(vec_list=vector_list, vec_size=vector_size)
-        result = self.train_cluster(n_clusters=n_cluster, vectors_list=vector_list)
-
+        #>>>
+        # distortions = []
+        # for i in range(1,11):
+        #    result,inertia = self.train_cluster(n_clusters=i, vectors_list=vector_list)
+        #    distortions.append(inertia)
+        #    cluster_result = defaultdict(list)
+        #    for doc_id, cluster_id in enumerate(result):
+        #        cluster_result[cluster_id].append(title_list[doc_id])
+        #    self.make_plot(vector_list, result)
+        #    print(cluster_result)
+        # plt.plot(range(1,11),distortions,marker='o')
+        # plt.xlabel('Number of clusters')
+        # plt.ylabel('Distortion')
+        # plt.show()
+        #<<<
+        result,inertia = self.train_cluster(n_clusters=n_cluster, vectors_list=vector_list)
         cluster_result = defaultdict(list)
         for doc_id, cluster_id in enumerate(result):
             cluster_result[cluster_id].append(title_list[doc_id])
